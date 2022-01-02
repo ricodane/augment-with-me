@@ -59,6 +59,24 @@ const InitialScene = props => {
     key: {
       diffuseTexture: require('./assets/key.jpg'),
     },
+    shower: {
+      diffuseTexture: require('./assets/shower.png'),
+    },
+    cup: {
+      diffuseTexture: require('./assets/cup.png'),
+    },
+    bull: {
+      diffuseTexture: require('./assets/bull.jpg'),
+    },
+    jar: {
+      diffuseTexture: require('./assets/jar.png'),
+    },
+    egg: {
+      diffuseTexture: require('./assets/egg.jpg'),
+    },
+    skirt: {
+      diffuseTexture: require('./assets/skirt.png'),
+    },
   });
 
   ViroAnimations.registerAnimations({
@@ -66,6 +84,12 @@ const InitialScene = props => {
       duration: 2500,
       properties: {
         rotateY: '+=90',
+      },
+    },
+    row: {
+      duration: 1000,
+      properties: {
+        rotateY: '+=5',
       },
     },
   });
@@ -76,8 +100,8 @@ const InitialScene = props => {
       {data.object === 'eye' ? (
         <Viro3DObject
           source={require('./assets/eye.obj')}
-          position={[0, -0.1, -6]}
-          rotation={[100, 20, 20]}
+          position={[0, 0, -6]}
+          rotation={[75, 100, 0]}
           scale={[0.5, 0.5, 0.5]}
           animation={{name: 'rotate', loop: true, run: true}}
           materials={['eye']}
@@ -213,6 +237,66 @@ const InitialScene = props => {
           materials={['key']}
           type="OBJ"
         />
+      ) : data.object === 'shower' ? (
+        <Viro3DObject
+          source={require('./assets/shower.obj')}
+          position={[0, -2, -3]}
+          rotation={[0, 40, 0]}
+          scale={[0.5, 0.5, 0.5]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['shower']}
+          type="OBJ"
+        />
+      ) : data.object === 'cup' ? (
+        <Viro3DObject
+          source={require('./assets/cup.obj')}
+          position={[0, -0.5, -2]}
+          rotation={[0, 40, 0]}
+          scale={[0.05, 0.05, 0.05]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['cup']}
+          type="OBJ"
+        />
+      ) : data.object === 'bull' ? (
+        <Viro3DObject
+          source={require('./assets/bull.obj')}
+          position={[0, 0, -3]}
+          rotation={[-85, 40, 0]}
+          scale={[0.3, 0.3, 0.3]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['bull']}
+          type="OBJ"
+        />
+      ) : data.object === 'jar' ? (
+        <Viro3DObject
+          source={require('./assets/jar.obj')}
+          position={[0, -2, -5]}
+          rotation={[0, 40, 0]}
+          scale={[0.25, 0.25, 0.25]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['jar']}
+          type="OBJ"
+        />
+      ) : data.object === 'egg' ? (
+        <Viro3DObject
+          source={require('./assets/egg.obj')}
+          position={[0, 7, -15]}
+          rotation={[0, 40, 0]}
+          scale={[0.1, 0.1, 0.1]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['egg']}
+          type="OBJ"
+        />
+      ) : data.object === 'skirt' ? (
+        <Viro3DObject
+          source={require('./assets/skirt.obj')}
+          position={[0, -1, -3]}
+          rotation={[0, 40, 0]}
+          scale={[1, 1, 1]}
+          animation={{name: 'rotate', loop: true, run: true}}
+          materials={['skirt']}
+          type="OBJ"
+        />
       ) : (
         <ViroText
           text={'None'}
@@ -241,7 +325,7 @@ const InitialScene = props => {
 };
 
 export default () => {
-  const [object, setObject] = useState('cone');
+  const [object, setObject] = useState('jar');
 
   const handleVoice = () => {
     Tts.speak('Mata');
@@ -264,7 +348,7 @@ export default () => {
           }}>
           <Text style={styles.text}>Mata</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setObject('key')}>
+        <TouchableOpacity onPress={() => setObject('jar')}>
           <Text style={styles.text}>Apa</Text>
         </TouchableOpacity>
       </View>
